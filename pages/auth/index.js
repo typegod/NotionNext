@@ -72,8 +72,9 @@ const fetchToken = async code => {
   const encoded = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
 
   try {
+    // Do not log sensitive OAuth credentials
     console.log(
-      `请求Code换取Token ${clientId}:${clientSecret} -- ${redirectUri}`
+      `请求Code换取Token, using redirectUri: ${redirectUri}`
     )
     const response = await axios.post(
       'https://api.notion.com/v1/oauth/token',
